@@ -1095,6 +1095,7 @@ class SequenceWidget(Widget):
     render_initial_item = False
     min_len = None
     max_len = None
+    category = 'structural'
     requirements = ( ('deform', None), )
 
     def prototype(self, field):
@@ -1586,7 +1587,7 @@ default_resources = {
     'jquery.maskedinput': {
         None:{
             'js':('scripts/jquery-1.7.2.min.js',
-                  'scripts/jquery.maskedinput-1.2.2.min.js'),
+                  'scripts/jquery.maskedinput-1.3.min.js'),
             },
         },
     'jquery.maskMoney': {
