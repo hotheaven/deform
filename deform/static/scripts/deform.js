@@ -53,7 +53,7 @@ var deform  = {
         //   its id to have a random component.
         // - For each label referencing an change id, change the label's
         //   for attribute to the new id.
-
+        
         var fieldmatch = /deformField(\d+)/;
         var namematch = /(.+)?-[#]{3}/;
         var code = protonode.data('prototype');
@@ -89,8 +89,9 @@ var deform  = {
 
         var anchorid = genid + '-anchor';
         var anchortext = '<a name="' + anchorid +'" id="' + anchorid + '"/>'
-        $(anchortext).appendTo(sequence);
-        $htmlnode.appendTo(sequence.find('> ul'));
+        var container = sequence.children('.deformSeqContainer').first()
+        $(anchortext).appendTo(container);
+        $htmlnode.appendTo(container);
 
         $(deform.callbacks).each(function(num, item) {
             var oid = item[0];
