@@ -4,6 +4,13 @@ Changes
 Next release
 ------------
 
+- Give the preview_url method of the tempstore access to the stored item. [tomster]
+- Fixed remove bug in nested sequences.  See
+  https://github.com/Pylons/deform/pull/89
+
+0.9.5 (2012-04-27)
+------------------
+
 - Add translations for TinyMCE.  Thanks OCHIAI, Gouji.
 
 - Japanese translation thanks to OCHIAI, Gouji.

@@ -13,7 +13,6 @@ from deform.i18n import _
 
 from deform.compat import (
     string_types,
-    next,
     StringIO,
     string,
     url_quote,
@@ -300,6 +299,7 @@ class MoneyInputWidget(Widget):
     readonly_template = 'readonly/textinput'
     requirements = ( ('jquery.maskMoney', None), )
     options = None
+    size = None
     
     def serialize(self, field, cstruct, readonly=False):
         if cstruct in (null, None):
@@ -741,12 +741,15 @@ class SelectWidget(Widget):
         The template name used to render the widget in read-only mode.
         Default: ``readonly/select``.
 
+    multiple
+        Enable multiple on the select widget ( default: ``False`` )
     """
     template = 'select'
     readonly_template = 'readonly/select'
     null_value = ''
     values = ()
     size = None
+    multiple = False
 
     def serialize(self, field, cstruct, readonly=False):
         if cstruct in (null, None):
@@ -1272,14 +1275,14 @@ class FileUploadWidget(Widget):
                     uid = self.random_id()
                     if self.tmpstore.get(uid) is None:
                         data['uid'] = uid
-                        data['preview_url'] = self.tmpstore.preview_url(uid)
                         self.tmpstore[uid] = data
+                        self.tmpstore[uid]['preview_url'] = self.tmpstore.preview_url(uid)
                         break
             else:
                 # a previous file exists
                 data['uid'] = uid
-                data['preview_url'] = self.tmpstore.preview_url(uid)
                 self.tmpstore[uid] = data
+                self.tmpstore[uid]['preview_url'] = self.tmpstore.preview_url(uid)
         else:
             # the upload control had no file selected
             if uid is None:
